@@ -17,17 +17,21 @@ router.get("/:ean", async (req: Request, res: Response) => {
 
  try {
     // Consulta a la base de datos, incluyendo nuevo_precio
+ // Consulta que une products con imagenes_productos usando la referencia
     const result = await pool.query(
-      `SELECT codbarras AS codbarras,
-              referencia AS referencia,
-              descripcion,
-              talla,
-              color,
-              departamento,
-              linea,
-              nuevo_precio
-       FROM products
-       WHERE codbarras = $1`,
+      `SELECT 
+          p.codbarras,
+          p.referencia,
+          p.descripcion,
+          p.talla,
+          p.color,
+          p.departamento,
+          p.linea,
+          p.nuevo_precio,
+          i.url_imagen
+       FROM products p
+       LEFT JOIN imagenes_productos i ON p.referencia = i.referencia
+       WHERE p.codbarras = $1`,
       [ean]
     );
 
