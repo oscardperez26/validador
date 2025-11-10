@@ -58,7 +58,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
     </div>
 
     <div className="card-footer">
-      <span className="price-label">Precio de venta</span>
+      <span className="price-label">Precio de venta  :</span>
       <span className="price-value">${product.precio.toLocaleString()}</span>
     </div>
   </div>);

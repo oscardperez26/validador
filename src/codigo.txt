@@ -1,0 +1,40 @@
+/src
+  /components
+    Header.tsx          <-- Header con logo y navegación (UI)
+    Footer.tsx          <-- Footer (UI)
+    ProductCard.tsx     <-- Tarjeta de producto dinámica
+    BarcodeScanner.tsx  <-- Componente para leer EAN-13
+  /context
+    AppContext.tsx      <-- Estado global: productos, carrito, filtros
+  /services
+    api.ts              <-- Funciones para consumir API (mock o real)
+  /pages
+    MainPage.tsx        <-- Página principal, centraliza todo el front
+  /assets
+    logo-koaj.png       <-- Logo
+  App.tsx               <-- Componente raíz
+  main.tsx              <-- Entrada de React
+
+
+/permoda-v2
+├─ backend/                  <-- Servidor y base de datos
+│   ├─ db/
+│   │   └─ products.db       <-- Base de datos SQLite con productos
+│   ├─ routes/
+│   │   └─ products.js       <-- Rutas para obtener productos por EAN-13
+│   ├─ server.js             <-- Servidor Express principal
+│   └─ package.json          <-- Dependencias y scripts backend
+│
+└─ src/                      <-- Frontend React + TypeScript
+    ├─ assets/               <-- Imágenes y logos
+    │   └─ logo-koaj.png
+    ├─ components/           <-- Componentes reutilizables
+    │   ├─ Header.tsx        <-- Header con logo y título
+    │   ├─ ProductCard.tsx   <-- Tarjeta de producto escaneado
+    │   └─ BarcodeScanner.tsx <-- Componente para leer EAN-13
+    ├─ pages/                <-- Página principal (una sola)
+    │   └─ MainPage.tsx
+    ├─ services/             <-- Funciones para consumir backend
+    │   └─ api.ts
+    ├─ App.tsx               <-- Componente raíz
+    └─ main.tsx              <-- Entrada de React
