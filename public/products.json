@@ -1,0 +1,18 @@
+[
+  {
+    "codigo": "7701234567890",
+    "referencia": "CAMISA OVERSIZE KOAJ",
+    "color": "Negro",
+    "talla": "M",
+    "precio": 89900,
+    "img": "https://www.koaj.co/107726-large_default/camiseta-estampada-algodon.jpg"
+  },
+  {
+    "codigo": "7709876543210",
+    "referencia": "JEAN SLIM FIT KOAJ",
+    "color": "Azul Oscuro",
+    "talla": "32",
+    "precio": 129900,
+    "img": "https://www.koaj.co/107726-large_default/camiseta-estampada-algodon.jpg"
+  }
+]
