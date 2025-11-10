@@ -6,7 +6,9 @@
  * - onSearch: función que se ejecuta al enviar el código
  */
 
+
 import React, { useState } from 'react';
+import {getProductBycod} from '../services/api';
 
 interface Props {
   onSearch: (code: string) => void;

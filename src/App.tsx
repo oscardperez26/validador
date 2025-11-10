@@ -12,7 +12,8 @@ import React, { useState } from 'react';
 import Header from './components/Header';
 import ScannerInput from './components/ScannerInput';
 import ProductCard from './components/ProductCard';
-import data from '../public/products.json';
+import { getProductBycod } from './services/api';
+
 
 const App: React.FC = () => {
   // Estado para almacenar el producto encontrado
@@ -22,10 +23,16 @@ const App: React.FC = () => {
    * handleSearch:
    * Busca el código dentro del JSON local
    */
-  const handleSearch = (code: string) => {
-    const found = data.find((item) => item.codigo === code);
-    setProduct(found || null);
-  };
+const handleSearch = async (code: string) => {
+  try {
+    const data = await getProductBycod(code); // consulta el backend
+    setProduct(data); // actualiza el estado
+  } catch (error) {
+    console.error('Error buscando producto:', error);
+    setProduct(null);
+  }
+};
+
 
   return (
     // Contenedor principal centrado

@@ -1,40 +1,35 @@
-/src
-  /components
-    Header.tsx          <-- Header con logo y navegación (UI)
-    Footer.tsx          <-- Footer (UI)
-    ProductCard.tsx     <-- Tarjeta de producto dinámica
-    BarcodeScanner.tsx  <-- Componente para leer EAN-13
-  /context
-    AppContext.tsx      <-- Estado global: productos, carrito, filtros
-  /services
-    api.ts              <-- Funciones para consumir API (mock o real)
-  /pages
-    MainPage.tsx        <-- Página principal, centraliza todo el front
-  /assets
-    logo-koaj.png       <-- Logo
-  App.tsx               <-- Componente raíz
-  main.tsx              <-- Entrada de React
-
-
-/permoda-v2
-├─ backend/                  <-- Servidor y base de datos
-│   ├─ db/
-│   │   └─ products.db       <-- Base de datos SQLite con productos
-│   ├─ routes/
-│   │   └─ products.js       <-- Rutas para obtener productos por EAN-13
-│   ├─ server.js             <-- Servidor Express principal
-│   └─ package.json          <-- Dependencias y scripts backend
+permoda/
 │
-└─ src/                      <-- Frontend React + TypeScript
-    ├─ assets/               <-- Imágenes y logos
-    │   └─ logo-koaj.png
-    ├─ components/           <-- Componentes reutilizables
-    │   ├─ Header.tsx        <-- Header con logo y título
-    │   ├─ ProductCard.tsx   <-- Tarjeta de producto escaneado
-    │   └─ BarcodeScanner.tsx <-- Componente para leer EAN-13
-    ├─ pages/                <-- Página principal (una sola)
-    │   └─ MainPage.tsx
-    ├─ services/             <-- Funciones para consumir backend
-    │   └─ api.ts
-    ├─ App.tsx               <-- Componente raíz
-    └─ main.tsx              <-- Entrada de React
+├─ backend/                  <-- Servidor y API
+│   ├─ node_modules/         <-- Dependencias de Node
+│   ├─ src/
+│   │   ├─ db.ts             <-- Conexión y configuración de PostgreSQL
+│   │   ├─ routes/
+│   │   │   └─ products.ts   <-- Rutas para consultar productos por EAN
+│   │   └─ server.ts         <-- Servidor Express principal
+│   ├─ package.json          <-- Dependencias y scripts backend
+│   └─ tsconfig.json         <-- Configuración de TypeScript para backend
+│
+├─ src/                      <-- Frontend con React + TypeScript
+│   ├─ assets/               <-- Imágenes, logos, íconos
+│   │   └─ logo-koaj.png
+│   │
+│   ├─ components/           <-- Componentes reutilizables de UI
+│   │   ├─ Header.tsx        <-- Header con logo
+│   │   ├─ Footer.tsx        <-- Footer (opcional)
+│   │   ├─ BarcodeScanner.tsx <-- Componente para leer EAN-13
+│   │   └─ ProductCard.tsx   <-- Tarjeta para mostrar producto y precio
+│   │
+│   ├─ pages/
+│   │   └─ MainPage.tsx      <-- Página principal, contiene BarcodeScanner
+│   │
+│   ├─ services/
+│   │   └─ api.ts            <-- Funciones para consumir la API backend
+│   │
+│   ├─ App.tsx               <-- Componente raíz, monta MainPage
+│   ├─ main.tsx              <-- Entrada de React
+│   ├─ index.css             <-- Estilos globales
+│   └─ App.css               <-- Estilos específicos del App
+│
+├─ package.json              <-- Configuración general si frontend y backend juntos
+└─ README.md                 <-- Documentación del proyecto

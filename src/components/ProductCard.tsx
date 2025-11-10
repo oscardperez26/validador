@@ -9,11 +9,11 @@
 import React from 'react';
 
 interface Product {
-  codigo: string;
+  codbarras: string;
   referencia: string;
   color: string;
   talla: string;
-  precio: number;
+  nuevo_precio: number;
   img: string;
 }
 
@@ -39,12 +39,12 @@ const ProductCard: React.FC<Props> = ({ product }) => {
 
       <div className="card-info">
         <div className="info-row">
-          <span className="title-card">Referencia</span>
+          <span className="title-card">referencia</span>
           <span className="description-card">{product.referencia}</span>
         </div>
         <div className="info-row">
           <span className="title-card">Código</span>
-          <span className="description-card">{product.codigo}</span>
+          <span className="description-card">{product.codbarras}</span>
         </div>
         <div className="info-row">
           <span className="title-card">Color</span>
@@ -58,8 +58,8 @@ const ProductCard: React.FC<Props> = ({ product }) => {
     </div>
 
     <div className="card-footer">
-      <span className="price-label">Precio de venta  :</span>
-      <span className="price-value">${product.precio.toLocaleString()}</span>
+      <span className="price-label">precio de venta  :</span>
+      <span className="price-value">${product.nuevo_precio.toLocaleString()}</span>
     </div>
   </div>);
 };
