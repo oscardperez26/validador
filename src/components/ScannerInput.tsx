@@ -6,7 +6,9 @@
  * - onSearch: función que se ejecuta al enviar el código
  */
 
+
 import React, { useState } from 'react';
+import {getProductBycod} from '../services/api';
 
 interface Props {
   onSearch: (code: string) => void;
@@ -36,7 +38,13 @@ const ScannerInput: React.FC<Props> = ({ onSearch }) => {
         type="text"
         placeholder="Escanea o escribe el código de barras..."
         value={value}
+        inputMode="numeric"
         onChange={(e) => setValue(e.target.value)}
+        onKeyDown={(e) =>   {
+          if (e.key === 'Enter') {
+            handleSubmit(e);
+          }
+        }}
         autoFocus
       />
     </form>

@@ -9,12 +9,16 @@
 import React from 'react';
 
 interface Product {
-  codigo: string;
+  codbarras: string;
   referencia: string;
   color: string;
   talla: string;
-  precio: number;
-  img: string;
+  nuevo_precio: number;
+  descripcion: string;
+  linea: string;
+  genero: string;
+  image: string;
+  
 }
 
 interface Props {
@@ -35,16 +39,16 @@ const ProductCard: React.FC<Props> = ({ product }) => {
   return (
    <div className="card">
     <div className="card-content">
-      <img src={product.img} alt={product.referencia} className="product-image" />
+      <img src={product.image} alt={product.referencia} className="product-image" />
 
       <div className="card-info">
         <div className="info-row">
-          <span className="title-card">Referencia</span>
+          <span className="title-card">referencia</span>
           <span className="description-card">{product.referencia}</span>
         </div>
         <div className="info-row">
           <span className="title-card">Código</span>
-          <span className="description-card">{product.codigo}</span>
+          <span className="description-card">{product.codbarras}</span>
         </div>
         <div className="info-row">
           <span className="title-card">Color</span>
@@ -54,12 +58,25 @@ const ProductCard: React.FC<Props> = ({ product }) => {
           <span className="title-card">Talla</span>
           <span className="description-card">{product.talla}</span>
         </div>
+        <div className="info-row">
+          <span className="title-card">Descripción</span>
+          <span className="description-card">{product.descripcion}</span>
+        </div>
+        <div className="info-row">
+          <span className="title-card">Línea</span>
+          <span className="description-card">{product.linea}</span>
+        </div>
+        <div className="info-row">
+          <span className="title-card">Genero</span>
+          <span className="description-card">{product.genero}</span>
+        </div>
+        
       </div>
     </div>
 
     <div className="card-footer">
-      <span className="price-label">Precio de venta</span>
-      <span className="price-value">${product.precio.toLocaleString()}</span>
+      <span className="price-label">precio de venta  :</span>
+      <span className="price-value">${product.nuevo_precio.toLocaleString()}</span>
     </div>
   </div>);
 };
