@@ -26,6 +26,7 @@ const App: React.FC = () => {
 const handleSearch = async (code: string) => {
   try {
     const data = await getProductBycod(code); // consulta el backend
+    console.log("Producto recibido:", data);
     setProduct(data); // actualiza el estado
   } catch (error) {
     console.error('Error buscando producto:', error);

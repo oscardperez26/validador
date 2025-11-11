@@ -14,10 +14,11 @@ interface Product {
   color: string;
   talla: string;
   nuevo_precio: number;
-  url_imagen: string;
   descripcion: string;
   linea: string;
   genero: string;
+  image: string;
+  
 }
 
 interface Props {
@@ -38,7 +39,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
   return (
    <div className="card">
     <div className="card-content">
-      <img src={product.url_imagen} alt={product.referencia} className="product-image" />
+      <img src={product.image} alt={product.referencia} className="product-image" />
 
       <div className="card-info">
         <div className="info-row">

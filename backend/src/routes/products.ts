@@ -28,7 +28,8 @@ router.get("/:ean", async (req: Request, res: Response) => {
           p.departamento,
           p.linea,
           p.nuevo_precio,
-          i.url_imagen
+          p.genero,
+          i.image
        FROM products p
        LEFT JOIN imagenes_productos i ON p.referencia = i.referencia
        WHERE p.codbarras = $1`,
