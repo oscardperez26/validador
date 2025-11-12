@@ -9,6 +9,7 @@
  */
 
 import React, { useState } from 'react';
+//import ReactDOM from 'react-dom/client';
 import Header from './components/Header';
 import ScannerInput from './components/ScannerInput';
 import ProductCard from './components/ProductCard';
