@@ -35,9 +35,12 @@
       );
     }
 
-        // decimales para el rpe
-    const precioFormateado = product.nuevo_precio.toLocaleString('es-CO', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
-
+        // decimales para el rpe aqui vamos a formatear el precio con decimales 
+    const n = Number(String(product.nuevo_precio).replace(/[^\d-]/g, ''));
+    const precioFormateado = new Intl.NumberFormat('es-CO', {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(n); // -> "249.900"
 
     // Si el producto existe, mostramos su información
     return (

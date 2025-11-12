@@ -37,6 +37,7 @@ input {
   width: 100%;
   font-size: 16px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);  
+  font-size: 1.5rem;
 }
 /*header - imagen koaj*/
 h1 {
@@ -62,7 +63,7 @@ h1 {
 
 .card {
   display: flex;
-  flex-direction: column; /* importante: columnas (arriba -> abajo) */
+  flex-direction: column-reverse; /* importante: columnas (arriba -> abajo) */
   justify-content: space-between;
   background-color: white;
   border-radius: 12px;
@@ -71,8 +72,11 @@ h1 {
   margin-top: 20px;
   gap: 16px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  max-width: 700px; 
+  max-width: 700px;
+  word-wrap: break-word
 }
+
+
 
 /* Contenedor superior: imagen + datos */
 .card-content {
@@ -90,7 +94,7 @@ h1 {
 }
 .info-row {
   display: flex;
-  justify-content: space-between;
+  width: fit-content;
   align-items: center;
   background: #929292;
   padding: 8px 12px;
@@ -138,22 +142,154 @@ h1 {
   text-align: center;
   align-items: center;
   gap: 10px;
+  font-size: 1.5rem;
 }
 
 .price-label {
   font-weight: bold;
-  font-size: 16px;
+  font-size: 1.4rem;
 }
 
 .price-value {
-  font-size: 20px;
-  font-weight: 800;
+  font-size: 1.7rem;
+  font-weight: bold;
+}
+
+.responsive-container {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
 }
 
 
+/* Ajuste visual en pantallas pequeñas ----------------------------------------- */
 @media (max-width: 600px) {
   body {
     padding: 10px;
+    align-items: center; /* centra contenido verticalmente */
+  }
+
+  .responsive-container {
+    max-width: 100%;
+    padding: 10px;
+  }
+  .card-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  input {
+    font-size: 1.5rem;
+    padding: 8px;
+  }
+
+  .card {
+    padding: 12px;
+    margin-top: 12px;
   }
 }
 
+/* Tablets y pantallas medianas */
+@media (max-width: 1200px) and (min-width: 694px) {
+
+  .responsive-container {
+    max-width: 700px;
+  }
+
+    h1 {
+      font-size: 2.4rem;
+    }
+    .product-image {
+    width: 40%; /* la imagen no se agranda demasiado */
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 16px;
+  }
+
+    .responsive-container {
+    width: 100%;
+    max-width: 100%; /* antes: 700px */
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .card {
+    max-width: 100%; /* antes: 700px */
+  }
+  .card-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 1.4rem;
+
+  }
+  .card-footer {
+    font-size: 1.8rem;
+  }
+    .price-label {
+    font-size: 2.4rem;
+  }
+  .price-value {
+    font-size: 3rem;
+  }
+}
+
+@media  (min-width: 1201px) {
+    h1 {
+      font-size: 3rem;
+    }
+    input{
+    font-size: 1.8rem;
+    }
+    
+  .card {
+    max-width: 100%; /* antes: 700px */
+  }
+  .logo-header{
+    font-size: 2.5rems;
+  }
+
+    .responsive-container {
+    width: 100%;
+    max-width: 100%; /* antes: 700px */
+    margin: 0 auto;
+    padding: 20px;
+  }
+   .product-image {
+    width: 40%; /* la imagen no se agranda demasiado */
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 16px;
+  }
+
+
+  .card-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 1.4rem;
+
+  }
+  .card-footer {
+    font-size: 1.8rem;
+  }
+  .info-row {
+    font-size: 2.4rem;
+  }
+  .price-label {
+    font-size: 2.4rem;
+  }
+  .price-value {
+    font-size: 3rem;
+  }
+
+}

@@ -37,7 +37,7 @@ const handleSearch = async (code: string) => {
 
   return (
     // Contenedor principal centrado
-    <div style={{ width: '100%', maxWidth: '500px' }}>
+    <div  className='responsive-container'>
       <Header />
       <ScannerInput onSearch={handleSearch} />
       <ProductCard product={product} />

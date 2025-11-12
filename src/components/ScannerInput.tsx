@@ -8,7 +8,7 @@
 
 
 import React, { useState } from 'react';
-import {getProductBycod} from '../services/api';
+
 
 interface Props {
   onSearch: (code: string) => void;
