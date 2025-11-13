@@ -7,7 +7,7 @@ import logokoajs from '../assets/logo-koaj.png';
 
 const Header: React.FC = () => {
   return (
-    <header>
+    <header className="app-header">
       <div className="logo-header">
         <img src={logokoajs} alt="Logo KOAJ" />
 

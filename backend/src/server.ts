@@ -5,17 +5,42 @@
 
 import express from "express";
 import cors from "cors";
+import dotenv from 'dotenv';
 import productsRouter from "./routes/products";
 
+import uploadRouter from './routes/upload';
+
+
+
+
+/* ------------------------------------------------*/
+dotenv.config();
 const app = express();
 
-// Middlewares
-app.use(cors({ origin: '*' })); // permite todas las conexiones       // Permite que el frontend acceda a la API
-app.use(express.json()); // Parseo de JSON automáticamente
+// Middleware para permitir peticiones desde el frontend (Vite)
+
+app.use(cors({
+  origin: ['http://localhost:5173'], // frontend
+  credentials: false
+}));
+
+
+// Para poder leer JSON en otros endpoints (por si necesitas)
+app.use(express.json());
+
+/**
+ * Aquí conectamos la URL base `/api/products`
+ * con el router definido en `routes/products.ts`.
+ *
+ * Esto significa que:
+ *  - GET /api/products/:ean
+ *    será manejado por router.get("/:ean", ...) en products.ts
+ */
+
 
 // Rutas
-app.use("/api/products", productsRouter);
-
+app.use('/api/products', productsRouter);
+app.use('/api/upload-xlsx', uploadRouter);
 // Levantar servidor
 const PORT = 5000;
 app.listen(PORT,'0.0.0.0', () => {

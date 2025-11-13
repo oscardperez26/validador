@@ -1,50 +1,31 @@
-/**
- * App principal
- * Combina los componentes y maneja la búsqueda de productos.
- * 
- * Flujo:
- * - El usuario ingresa un código (ScannerInput)
- * - App busca el producto en products.json
- * - Si lo encuentra, se muestra en ProductCard
- */
 
-import React, { useState } from 'react';
-//import ReactDOM from 'react-dom/client';
-import Header from './components/Header';
-import ScannerInput from './components/ScannerInput';
-import ProductCard from './components/ProductCard';
-import { getProductBycod } from './services/api';
+
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import ConsultaPage from './pages/ConsultaPage';
+import BasePage  from './pages/BasePage';
 
 
 const App: React.FC = () => {
-  // Estado para almacenar el producto encontrado
-  const [product, setProduct] = useState<any>(null);
-
-  /**
-   * handleSearch:
-   * Busca el código dentro del JSON local
-   */
-const handleSearch = async (code: string) => {
-  try {
-    const data = await getProductBycod(code); // consulta el backend
-    console.log("Producto recibido:", data);
-    setProduct(data); // actualiza el estado
-  } catch (error) {
-    console.error('Error buscando producto:', error);
-    setProduct(null);
-  }
-};
-
-
+  console.log('base');
+  
   return (
-    // Contenedor principal centrado
-    <div  className='responsive-container'>
-      <Header />
-      <ScannerInput onSearch={handleSearch} />
-      <ProductCard product={product} />
-    </div>
+
+      <Routes>
+        {/* Ruta principal: menú con opciones */}
+        <Route path="/" element={<Home />} />
+
+        {/* Ruta para consultar precio (tu lógica actual) */}
+        <Route path="/consulta" element={<ConsultaPage />} />
+
+        {/* Ruta para la sección "Base" (login + upload Excel) */}
+        <Route path="/base" element={<BasePage />} />
+      </Routes>
   );
 };
+
+
 
 export default App;
 
