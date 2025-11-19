@@ -19,10 +19,11 @@ const app = express();
 
 // Middleware para permitir peticiones desde el frontend (Vite)
 
-app.use(cors({
+/*app.use(cors({
   origin: ['http://localhost:5173'], // frontend
   credentials: false
-}));
+}));*/
+app.use(cors()); // Permitir todas las conexiones (ajustar en producción)
 
 
 // Para poder leer JSON en otros endpoints (por si necesitas)

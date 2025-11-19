@@ -3,7 +3,7 @@
  * Servicio para consumir la API del backend.
  */
 
-const BASE_URL = 'http://localhost:5000/api';
+const BASE_URL = 'http://10.18.4.51:5000/api';
 
 export const getProductBycod = async (ean: string) => {
   try {
