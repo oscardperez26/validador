@@ -43,7 +43,7 @@ app.use(express.json());
 app.use('/api/products', productsRouter);
 app.use('/api/upload-xlsx', uploadRouter);
 // Levantar servidor
-const PORT = 5000;
-app.listen(PORT,'0.0.0.0', () => {
+const PORT = Number(process.env.PORT) || 5000;
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Servidor corriendo en puerto ${PORT}`);
 });
