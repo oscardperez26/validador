@@ -165,3 +165,12 @@ vite.config.ts.timestamp-*
 .vite/
 
 backend/credentials/
+
+# credenciales
+backend/credentials/
+**/service-account.json
+
+# node
+node_modules/
+dist/
+.env
