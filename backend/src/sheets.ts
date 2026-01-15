@@ -20,7 +20,17 @@ async function loadFromSheets() {
   const now = Date.now();
   if (now - lastLoaded < REFRESH_MS && productsByEan.size > 0) return;
 
-  const credsPath = path.join(process.cwd(), "credentials", "service-account.json");
+  const credsPath =
+    process.env.GOOGLE_SA_PATH ||
+    path.resolve(process.cwd(), "credentials", "service-account.json");
+
+  if (!fs.existsSync(credsPath)) {
+    throw new Error(
+      `No se encontro service-account.json. Path probado: ${credsPath}. ` +
+      `Configura GOOGLE_SA_PATH o crea credentials/service-account.json`
+    );
+  }
+
   const creds = JSON.parse(fs.readFileSync(credsPath, "utf8"));
 
   const auth = new google.auth.JWT({
@@ -72,7 +82,7 @@ async function loadFromSheets() {
 }
 
 export async function getProductByEan(ean: string) {
-  await loadFromSheets(); // aquí NO vuelve a llamar Sheets cada vez, solo cuando toca refresh
+  await loadFromSheets();
   const p = productsByEan.get(norm(ean));
   if (!p) return null;
 
