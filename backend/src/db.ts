@@ -1,25 +1,25 @@
-/**
- * src/db.ts
- * Configuración de conexión a PostgreSQL usando pg Pool
- */
-
 import { Pool } from "pg";
 
-// Configuración de la base de datos
-export const pool = new Pool({
-  user: "postgres",         // Usuario PostgreSQL
-  host: "localhost",           // Servidor (IP o localhost)
-  database: "permoda",         // Base de datos
-  password: "admin1234",   // Contraseña
-  port: 5432,                  // Puerto por defecto PostgreSQL
-});
+// Si NO hay DATABASE_URL, no intentamos conectar (ideal para Render si no usas DB)
+const DATABASE_URL = process.env.DATABASE_URL;
 
-// Test de conexión
-pool.connect((err, client, release) => {
-  if (err) {
-    console.error("Error conectando a PostgreSQL:", err);
-  } else {
-    console.log("Conectado a PostgreSQL");
-    release();
-  }
-});
+export const pool = DATABASE_URL
+  ? new Pool({
+      connectionString: DATABASE_URL,
+      ssl: { rejectUnauthorized: false }, // útil si tu DB es externa/Render
+    })
+  : null;
+
+// Test de conexión SOLO si hay DB configurada
+if (pool) {
+  pool.connect((err, client, release) => {
+    if (err) {
+      console.error("Error conectando a PostgreSQL:", err);
+    } else {
+      console.log("Conectado a PostgreSQL");
+      release();
+    }
+  });
+} else {
+  console.log("PostgreSQL desactivado (sin DATABASE_URL)");
+}
