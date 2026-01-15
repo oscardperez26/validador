@@ -77,7 +77,7 @@ router.post(
       //    cada objeto = una fila, con keys = encabezados del Excel.
         const rows: any[] = XLSX.utils.sheet_to_json(sheet, {
         defval: null,
-        raw: false,  // 👈 clave: usar el valor formateado como texto
+        raw: false,  //  clave: usar el valor formateado como texto
         });
 
       if (!rows.length) {
@@ -159,6 +159,7 @@ router.post(
                 tipo_estampado,
                 bruto,
                 nuevo_precio,
+                observacion,
                 antiguedad,
                 observacion,
                 inventario_tiendas
@@ -190,6 +191,7 @@ router.post(
               tipo_estampado,
               bruto,
               nuevo_precio,
+              observacion,
               antiguedad,
               observacion,
               inventario_tiendas,
@@ -223,6 +225,7 @@ router.post(
             tipo_estampado,
             bruto,
             nuevo_precio,
+            observacion,
             antiguedad,
             observacion,
             inventario_tiendas
@@ -276,6 +279,7 @@ router.post(
             tipo_estampado       = EXCLUDED.tipo_estampado,
             bruto                = EXCLUDED.bruto,
             nuevo_precio         = EXCLUDED.nuevo_precio,
+            observacion          = EXCLUDED.observacion,
             antiguedad           = EXCLUDED.antiguedad,
             observacion          = EXCLUDED.observacion,
             inventario_tiendas   = EXCLUDED.inventario_tiendas;

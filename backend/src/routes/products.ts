@@ -28,6 +28,7 @@ router.get("/:ean", async (req: Request, res: Response) => {
           p.departamento,
           p.linea,
           p.nuevo_precio,
+          p.observacion,
           p.genero,
           i.image
        FROM products p

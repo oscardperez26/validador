@@ -18,6 +18,7 @@
     linea: string;
     genero: string;
     image: string;
+    observacion: string;
     
   }
 
@@ -42,11 +43,18 @@
       maximumFractionDigits: 0,
     }).format(n); // -> "249.900"
 
+    const handleimagerror = (e) => {
+        // Cuando la imagen falla, cambia su fuente (e.target.src)
+        // a la imagen por defecto.
+        // Esto evita un loop infinito si la imagen por defecto
+        // también falla al cargar.
+        e.target.src = '../assets/logo-koaj.png';
+    };
     // Si el producto existe, mostramos su información
     return (
     <div className="card">
       <div className="card-content">
-        <img src={product.image} alt={product.referencia} className="product-image" />
+        <img src={product.image} alt={product.referencia} className="product-image" onError={handleimagerror} />
 
         <div className="card-info">
           <div className="info-row">
@@ -82,8 +90,8 @@
       </div>
 
       <div className="card-footer">
-        <span className="price-label">precio de venta  :</span>
-        <span className="price-value">${precioFormateado}</span>
+        <span className="price-label">observacion:</span>
+        <span className="price-value">{product.observacion}</span>
       </div>
     </div>);
   };

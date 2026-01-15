@@ -68,7 +68,7 @@ const BasePage: React.FC = () => {
             // Llamamos al servicio que se comunica con el backend
             const response = await uploadBaseFile(file, user, pass);
 
-            alert(`✅ Base actualizada. Registros procesados: ${response.total}`);
+            alert(` Base actualizada. Registros procesados: ${response.total}`);
         } catch (err: any) {
             console.error('Error subiendo archivo:', err);
             alert(err?.message || 'Error al subir el archivo');

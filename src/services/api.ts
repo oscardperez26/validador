@@ -2,8 +2,9 @@
  * api.ts
  * Servicio para consumir la API del backend.
  */
-
-const BASE_URL = 'http://10.18.4.51:5000/api';
+//const BASE_URL = 'http://10.18.4.51:5000/api';
+//const BASE_URL = 'http://172.20.10.5:5000/api';
+const BASE_URL = 'http://localhost:5000/api'; // npm run dev -- --host 0.0.0.0 --port 5173
 
 export const getProductBycod = async (ean: string) => {
   try {
